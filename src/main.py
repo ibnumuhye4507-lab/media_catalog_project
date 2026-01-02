@@ -63,9 +63,9 @@ def main():
                 new_dom = transform(dom)
                 with open("report.html", "wb") as f:
                     f.write(etree.tostring(new_dom, pretty_print=True))
-                print("\n✅ ሪፖርቱ 'report.html' በሚል ስም ተዘጋጅቷል! በብራውዘርህ ክፈተው።")
+                print("\n ok ሪፖርቱ 'report.html' በሚል ስም ተዘጋጅቷል! በብራውዘርህ ክፈተው።")
             except Exception as e:
-                print(f"\n❌ ስህተት ተፈጥሯል: {e}")
+                print(f"\n no ስህተት ተፈጥሯል: {e}")
                 print("ምናልባት data/full_catalog.xsl ፋይል አልተፈጠረም ይሆናል።")
 
         elif choice == '5':

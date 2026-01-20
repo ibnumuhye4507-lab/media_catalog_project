@@ -1,7 +1,6 @@
 import xml.etree.ElementTree as ET
 import os
-# ከmodels ፎልደር ውስጥ ክላሶቹን እናስገባለን
-from src.models.media import Book, Movie 
+from src.models.media import Book, Movie
 from src.models.factory import MediaFactory
 
 class CatalogRepository:
@@ -19,9 +18,9 @@ class CatalogRepository:
             items = []
 
             for elem in root:
-                # የ XML መረጃውን ወደ ዲክሽነሪ (dictionary) እንቀይራለን
+                # የ XML መረጃውን ወደ dictionary እንቀይራለን
                 data = {child.tag: child.text for child in elem}
-                # በFactory Pattern አማካኝነት ኦብጀክቱን እንፈጥራለን
+                # በFactory አማካኝነት ኦብጀክቱን እንፈጥራለን
                 item = MediaFactory.create_media(elem.tag, **data)
                 if item:
                     items.append(item)
@@ -32,27 +31,34 @@ class CatalogRepository:
 
     def save_all(self, media_items):
         """መረጃን ወደ XML ፋይል ሴቭ ያደርጋል"""
-        root = ET.Element("catalog")
-        
-        for item in media_items:
-            # መጽሐፍ ወይም ፊልም መሆኑን እንለያለን
-            if isinstance(item, Book):
-                tag = "book"
-            elif isinstance(item, Movie):
-                tag = "movie"
-            else:
-                continue
+        try:
+            # የ data ፎልደር ከሌለ እንዲፈጠር ማድረግ
+            os.makedirs(os.path.dirname(self.file_path), exist_ok=True)
 
-            media_elem = ET.SubElement(root, tag)
-            ET.SubElement(media_elem, "title").text = str(item.title)
-            ET.SubElement(media_elem, "year").text = str(item.year)
+            root = ET.Element("catalog")
+            for item in media_items:
+                # የ tag ስም መምረጥ
+                if isinstance(item, Book):
+                    tag = "book"
+                elif isinstance(item, Movie):
+                    tag = "movie"
+                else:
+                    continue
+
+                media_elem = ET.SubElement(root, tag)
+                ET.SubElement(media_elem, "title").text = str(item.title)
+                ET.SubElement(media_elem, "year").text = str(item.year)
+                
+                # እንደየአይነቱ የተለየውን መረጃ እንጨምራለን
+                if isinstance(item, Book):
+                    ET.SubElement(media_elem, "author").text = str(item.author)
+                elif isinstance(item, Movie):
+                    ET.SubElement(media_elem, "director").text = str(item.director)
             
-            # እንደየአይነቱ የተለየውን መረጃ እንጨምራለን
-            if isinstance(item, Book):
-                ET.SubElement(media_elem, "author").text = str(item.author)
-            elif isinstance(item, Movie):
-                ET.SubElement(media_elem, "director").text = str(item.director)
-        
-        # ፋይሉን በUTF-8 ፎርማት እንጽፋለን
-        tree = ET.ElementTree(root)
-        tree.write(self.file_path, encoding="UTF-8", xml_declaration=True)
+            tree = ET.ElementTree(root)
+            with open(self.file_path, "wb") as f:
+                tree.write(f, encoding="UTF-8", xml_declaration=True)
+            print("መረጃው በ XML ፋይል ውስጥ ተቀምጧል!")
+            
+        except Exception as e:
+            print(f"ሴቭ ሲደረግ ስህተት ተፈጠረ: {e}")

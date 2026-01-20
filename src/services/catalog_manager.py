@@ -3,8 +3,8 @@ class CatalogManager:
 
     def __new__(cls):
         if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            cls._instance.items = []
+            cls._instance = super(CatalogManager, cls).__new__(cls)
+            cls._instance.items = [] # መረጃዎቹ እዚህ ይቀመጣሉ
         return cls._instance
 
     def set_items(self, items):

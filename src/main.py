@@ -3,12 +3,10 @@ import os
 import webbrowser
 from lxml import etree
 
-# ፋይሉ ያለበትን አድራሻ በደንብ ለማወቅ
+# Directory setup
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# የፕሮጀክቱን root folder (media_catalog_project) ወደ path መጨመር
 sys.path.append(os.path.dirname(BASE_DIR))
 
-# አድራሻዎችን በቋሚነት ማስተካከል
 XML_PATH = os.path.join(BASE_DIR, "..", "data", "catalog.xml")
 XSL_PATH = os.path.join(BASE_DIR, "..", "data", "full_catalog.xsl")
 REPORT_PATH = os.path.join(BASE_DIR, "..", "report.html")
@@ -18,61 +16,60 @@ from src.services.catalog_manager import CatalogManager
 from src.models.factory import MediaFactory
 
 def show_menu():
-    print("\n" + "="*30)
-    print("   የሚዲያ ካታሎግ ማስተዳደሪያ")
-    print("="*30)
-    print("1. ሁሉንም ሚዲያዎች እይ")
-    print("2. አዲስ መጽሐፍ ጨምር")
-    print("3. አዲስ ፊልም ጨምር")
-    print("4. HTML ሪፖርት አውጣ")
-    print("5. ሴቭ አድርግና ውጣ")
-    print("="*30)
+    print("\n" + "="*35)
+    print("      MEDIA CATALOG MANAGER")
+    print("="*35)
+    print("1. View All Media Items")
+    print("2. Add New Book")
+    print("3. Add New Movie")
+    print("4. Generate HTML Report")
+    print("5. Search Media by Title")
+    print("6. Save and Exit")
+    print("="*35)
 
 def main():
-    # repo ሲፈጠር ትክክለኛውን የ XML አድራሻ እንሰጠዋለን
     repo = CatalogRepository(XML_PATH)
     manager = CatalogManager()
     
-    # ፋይሉ ካለ ዳታውን እንዲያነብ፣ ከሌለ ባዶ እንዲጀምር
+    # Load existing data from XML
     try:
         manager.set_items(repo.load_all())
     except Exception as e:
-        print(f"ዳታውን መጫን አልተቻለም: {e}")
+        print(f"Error loading data: {e}")
     
     while True:
         show_menu()
-        choice = input("ምርጫዎን ያስገቡ (1-5): ")
+        choice = input("Enter your choice (1-6): ")
         
         if choice == '1':
             items = manager.get_all()
             if not items:
-                print("\nካታሎጉ ባዶ ነው።")
+                print("\nThe catalog is empty.")
             else:
                 for i, item in enumerate(items, 1):
                     type_name = item.__class__.__name__
-                    print(f"{i}. [{type_name}] ርዕስ: {item.title}, ዓ.ም: {item.year}")
+                    print(f"{i}. [{type_name}] {item.title} ({item.year})")
 
         elif choice == '2':
-            title = input("የመጽሐፉ ርዕስ: ")
-            year = input("የታተመበት ዓ.ም: ")
-            author = input("ደራሲ: ")
+            title = input("Book Title: ")
+            year = input("Publication Year: ")
+            author = input("Author: ")
             new_book = MediaFactory.create_media("book", title=title, year=year, author=author)
             manager.add_item(new_book)
-            print("መጽሐፉ ተጨምሯል! (ለማስቀመጥ 5 ቁጥርን መጫን አይርሱ)")
+            print("Book added successfully!")
 
         elif choice == '3':
-            title = input("የፊልሙ ርዕስ: ")
-            year = input("የወጣበት ዓ.ም: ")
-            director = input("አዘጋጅ (Director): ")
+            title = input("Movie Title: ")
+            year = input("Release Year: ")
+            director = input("Director: ")
             new_movie = MediaFactory.create_media("movie", title=title, year=year, director=director)
             manager.add_item(new_movie)
-            print("ፊልሙ ተጨምሯል! (ለማስቀመጥ 5 ቁጥርን መጫን አይርሱ)")
+            print("Movie added successfully!")
 
         elif choice == '4':
             try:
-                import webbrowser  # አውቶማቲክ እንዲከፍትልን
                 if not os.path.exists(XML_PATH) or not os.path.exists(XSL_PATH):
-                    print(f"\n no ስህተት: {XML_PATH} ወይም {XSL_PATH} አልተገኘም!")
+                    print(f"Error: XML or XSL file not found!")
                     continue
                 
                 dom = etree.parse(XML_PATH)
@@ -83,19 +80,27 @@ def main():
                 with open(REPORT_PATH, "wb") as f:
                     f.write(etree.tostring(new_dom, pretty_print=True))
                 
-                print(f"\n ok ሪፖርቱ '{REPORT_PATH}' ተዘጋጅቷል!")
-                
-                # ይህ መስመር ነው አውቶማቲክ Chrome-ን የሚከፍተው
+                print(f"Report generated: {REPORT_PATH}")
                 webbrowser.open('file://' + os.path.realpath(REPORT_PATH))
-                
             except Exception as e:
-                print(f"\n ሪፖርት ማውጣት አልተቻለም: {e}")
+                print(f"Report error: {e}")
+
         elif choice == '5':
+            query = input("Enter title to search: ")
+            results = manager.search_by_title(query)
+            if results:
+                print(f"\n--- Found {len(results)} item(s) ---")
+                for i, item in enumerate(results, 1):
+                    print(f"{i}. [{item.__class__.__name__}] {item.title} ({item.year})")
+            else:
+                print(f"No results found for '{query}'")
+
+        elif choice == '6':
             repo.save_all(manager.get_all())
-            print("መረጃው ተቀምጧል (Saved)። ደህና ሁኑ!")
+            print("Data saved. Goodbye!")
             break
         else:
-            print("የተሳሳተ ምርጫ! እባክህ እንደገና ሞክር።")
+            print("Invalid choice, please try again.")
 
 if __name__ == "__main__":
     main()

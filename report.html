@@ -2,177 +2,128 @@
   <head>
     <title>&#4770;&#4661;&#4619;&#4635;&#4810; &#4634;&#4850;&#4843; &#4779;&#4723;&#4622;&#4877;</title>
     <style>
-                body {
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    background-color: #f0f4f0;
-                    margin: 0;
-                    padding: 40px;
-                    direction: ltr;
-                }
-                .container {
-                    max-width: 1000px; /* &#4632;&#4648;&#4867;&#4813; &#4773;&#4757;&#4850;&#4704;&#4675; &#4725;&#4757;&#4669; &#4656;&#4939; &#4720;&#4848;&#4653;&#4883;&#4621; */
-                    margin: auto;
-                    background: white;
-                    padding: 30px;
-                    border-radius: 20px;
-                    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-                }
-                h2 {
-                    color: #1b5e20;
-                    text-align: center;
-                    border-bottom: 4px solid #2e7d32;
-                    padding-bottom: 15px;
-                    font-size: 28px;
-                }
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    margin-top: 30px;
-                }
-                th {
-                    background-color: #2e7d32;
-                    color: white;
-                    padding: 18px;
-                    text-align: left;
-                    font-size: 18px;
-                }
-                td {
-                    padding: 18px;
-                    border-bottom: 1px solid #eee;
-                    font-size: 16px;
-                }
-                tr:hover {
-                    background-color: #f1f8f1;
-                }
-                .btn-view {
-                    color: white;
-                    padding: 10px 20px;
-                    text-decoration: none;
-                    border-radius: 8px;
-                    font-size: 14px;
-                    font-weight: bold;
-                    display: inline-block;
-                }
-                .btn-book { background-color: #3498db; }
-                .btn-movie { background-color: #2e7d32; }
+                body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f0f4f0; padding: 40px; }
+                .container { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+                h2 { color: #1b5e20; text-align: center; border-bottom: 4px solid #2e7d32; padding-bottom: 15px; }
                 
-                .type-tag {
-                    font-size: 12px;
-                    background: #e8f5e9;
-                    color: #2e7d32;
-                    padding: 4px 10px;
-                    border-radius: 12px;
-                    font-weight: bold;
-                }
-                .creator-name {
-                    font-style: italic;
-                    color: #555;
-                }
+                table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+                th { background-color: #2e7d32; color: white; padding: 18px; text-align: left; }
+                td { padding: 18px; border-bottom: 1px solid #eee; }
+                
+                .btn-view { color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; display: inline-block; }
+                .btn-book { background-color: #3498db; }
+                .btn-movie { background-color: #e67e22; }
+                
+                /* &#4840;&#4829;&#4653;&#4829;&#4653; &#4632;&#4648;&#4867; &#4779;&#4653;&#4853; &#4661;&#4723;&#4845;&#4621; */
+                .detail-section { margin-top: 50px; border-top: 2px solid #2e7d32; padding-top: 20px; }
+                .detail-card { background: #f9f9f9; border-left: 8px solid #2e7d32; padding: 20px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+                .back-link { font-size: 12px; color: #2e7d32; text-decoration: none; font-weight: bold; }
             </style>
   </head>
   <body>
     <div class="container">
-      <h2>&#4840;&#4770;&#4661;&#4619;&#4635;&#4810; &#4634;&#4850;&#4843; &#4851;&#4669;&#4710;&#4653;&#4853;</h2>
+      <h2>&#4840;&#4770;&#4661;&#4619;&#4635;&#4810; &#4634;&#4850;&#4843; &#4779;&#4723;&#4622;&#4877;</h2>
       <table>
         <tr>
           <th>&#4819;&#4845;&#4752;&#4725;</th>
           <th>&#4653;&#4821;&#4661;</th>
           <th>&#4848;&#4651;&#4658;/&#4851;&#4845;&#4652;&#4781;&#4720;&#4653;</th>
-          <th>&#4840;&#4808;&#4899;&#4704;&#4725; &#4819;.&#4637;</th>
           <th>&#4720;&#4877;&#4707;&#4653;</th>
         </tr>
         <tr>
-          <td>
-            <span class="type-tag">&#4632;&#4925;&#4624;&#4941;</span>
-          </td>
-          <td style="font-weight:bold;">Seerah of Prophet Muhammad</td>
-          <td class="creator-name">Safyur Rahman Al-Mubarakpuri</td>
-          <td>2021</td>
-          <td>
-            <a class="btn-view btn-book" target="_blank" href="https://www.google.com/search?tbm=bks&amp;q=Seerah of Prophet Muhammad">
-                                        &#128214; &#4768;&#4757;&#4709;&#4709;
-                                    </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="type-tag">&#4714;&#4850;&#4846;</span>
-          </td>
-          <td style="font-weight:bold;">The Message (Risala)</td>
-          <td class="creator-name">Moustapha Akkad</td>
-          <td>1976</td>
-          <td>
-            <a class="btn-view btn-movie" target="_blank" href="https://www.youtube.com/results?search_query=The Message (Risala)">
-                                        &#9654; &#4773;&#4845;
-                                    </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="type-tag">&#4714;&#4850;&#4846;</span>
-          </td>
-          <td style="font-weight:bold;">Umar Series</td>
-          <td class="creator-name">Hatem Ali</td>
-          <td>2012</td>
-          <td>
-            <a class="btn-view btn-movie" target="_blank" href="https://www.youtube.com/results?search_query=Umar Series">
-                                        &#9654; &#4773;&#4845;
-                                    </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="type-tag">&#4632;&#4925;&#4624;&#4941;</span>
-          </td>
+          <td>&#4632;&#4925;&#4624;&#4941;</td>
           <td style="font-weight:bold;">history</td>
-          <td class="creator-name">hussen</td>
-          <td>1890</td>
+          <td>hussen</td>
           <td>
-            <a class="btn-view btn-book" target="_blank" href="https://www.google.com/search?tbm=bks&amp;q=history">
-                                        &#128214; &#4768;&#4757;&#4709;&#4709;
-                                    </a>
+            <a class="btn-view btn-book" href="#item-id1">&#4632;/&#4941; &#4768;&#4757;&#4709;&#4709;</a>
           </td>
         </tr>
         <tr>
-          <td>
-            <span class="type-tag">&#4632;&#4925;&#4624;&#4941;</span>
-          </td>
-          <td style="font-weight:bold;">the horn of african</td>
-          <td class="creator-name">abdulaziz</td>
-          <td>1996</td>
-          <td>
-            <a class="btn-view btn-book" target="_blank" href="https://www.google.com/search?tbm=bks&amp;q=the horn of african">
-                                        &#128214; &#4768;&#4757;&#4709;&#4709;
-                                    </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="type-tag">&#4632;&#4925;&#4624;&#4941;</span>
-          </td>
+          <td>&#4632;&#4925;&#4624;&#4941;</td>
           <td style="font-weight:bold;">history of Ethiopian</td>
-          <td class="creator-name">abiy ahmed</td>
-          <td>2018</td>
+          <td>abiy ahmed</td>
           <td>
-            <a class="btn-view btn-book" target="_blank" href="https://www.google.com/search?tbm=bks&amp;q=history of Ethiopian">
-                                        &#128214; &#4768;&#4757;&#4709;&#4709;
-                                    </a>
+            <a class="btn-view btn-book" href="#item-id2">&#4632;/&#4941; &#4768;&#4757;&#4709;&#4709;</a>
           </td>
         </tr>
         <tr>
-          <td>
-            <span class="type-tag">&#4632;&#4925;&#4624;&#4941;</span>
-          </td>
+          <td>&#4632;&#4925;&#4624;&#4941;</td>
           <td style="font-weight:bold;">history of chat gpt </td>
-          <td class="creator-name">hayat endris</td>
-          <td>1993</td>
+          <td>hayat endris</td>
           <td>
-            <a class="btn-view btn-book" target="_blank" href="https://www.google.com/search?tbm=bks&amp;q=history of chat gpt ">
-                                        &#128214; &#4768;&#4757;&#4709;&#4709;
-                                    </a>
+            <a class="btn-view btn-book" href="#item-id3">&#4632;/&#4941; &#4768;&#4757;&#4709;&#4709;</a>
+          </td>
+        </tr>
+        <tr>
+          <td>&#4632;&#4925;&#4624;&#4941;</td>
+          <td style="font-weight:bold;">world war</td>
+          <td>dr salah</td>
+          <td>
+            <a class="btn-view btn-book" href="#item-id4">&#4632;/&#4941; &#4768;&#4757;&#4709;&#4709;</a>
+          </td>
+        </tr>
+        <tr>
+          <td>&#4714;&#4850;&#4846;</td>
+          <td style="font-weight:bold;"> youtube</td>
+          <td>abdulaziz</td>
+          <td>
+            <a class="btn-view btn-movie" href="#item-id5">&#4714;&#4853;&#4808;&#4773;&#4845;</a>
           </td>
         </tr>
       </table>
+      <div class="detail-section">
+        <h2 style="text-align: left;">&#4829;&#4653;&#4829;&#4653; &#4632;&#4648;&#4867;&#4814;&#4733;</h2>
+        <div class="detail-card" id="item-id1">
+          <h3>&#4653;&#4821;&#4661;&#4966; history</h3>
+          <p><strong>&#4819;&#4845;&#4752;&#4725;&#4966; </strong>book</p>
+          <p><strong>&#4840;&#4808;&#4899;&#4704;&#4725; &#4819;&#4632;&#4725;&#4966; </strong>1890 &#4819;.&#4637;</p>
+          <p><strong>&#4848;&#4651;&#4658;&#4966; </strong>hussen</p>
+          <p>
+            <em>&#4845;&#4613; &#4632;&#4925;&#4624;&#4941; &#4704;&#4779;&#4723;&#4622;&#4875;&#4733;&#4757; &#4813;&#4661;&#4901; &#4704;&#4829;&#4653;&#4829;&#4653; &#4720;&#4632;&#4829;&#4877;&#4711;&#4621;&#4962;</em>
+          </p>
+          <a href="#" class="back-link">&#4808;&#4848; &#4619;&#4845; &#4720;&#4632;&#4616;&#4661; &#8593;</a>
+        </div>
+        <div class="detail-card" id="item-id2">
+          <h3>&#4653;&#4821;&#4661;&#4966; history of Ethiopian</h3>
+          <p><strong>&#4819;&#4845;&#4752;&#4725;&#4966; </strong>book</p>
+          <p><strong>&#4840;&#4808;&#4899;&#4704;&#4725; &#4819;&#4632;&#4725;&#4966; </strong>2018 &#4819;.&#4637;</p>
+          <p><strong>&#4848;&#4651;&#4658;&#4966; </strong>abiy ahmed</p>
+          <p>
+            <em>&#4845;&#4613; &#4632;&#4925;&#4624;&#4941; &#4704;&#4779;&#4723;&#4622;&#4875;&#4733;&#4757; &#4813;&#4661;&#4901; &#4704;&#4829;&#4653;&#4829;&#4653; &#4720;&#4632;&#4829;&#4877;&#4711;&#4621;&#4962;</em>
+          </p>
+          <a href="#" class="back-link">&#4808;&#4848; &#4619;&#4845; &#4720;&#4632;&#4616;&#4661; &#8593;</a>
+        </div>
+        <div class="detail-card" id="item-id3">
+          <h3>&#4653;&#4821;&#4661;&#4966; history of chat gpt </h3>
+          <p><strong>&#4819;&#4845;&#4752;&#4725;&#4966; </strong>book</p>
+          <p><strong>&#4840;&#4808;&#4899;&#4704;&#4725; &#4819;&#4632;&#4725;&#4966; </strong>1993 &#4819;.&#4637;</p>
+          <p><strong>&#4848;&#4651;&#4658;&#4966; </strong>hayat endris</p>
+          <p>
+            <em>&#4845;&#4613; &#4632;&#4925;&#4624;&#4941; &#4704;&#4779;&#4723;&#4622;&#4875;&#4733;&#4757; &#4813;&#4661;&#4901; &#4704;&#4829;&#4653;&#4829;&#4653; &#4720;&#4632;&#4829;&#4877;&#4711;&#4621;&#4962;</em>
+          </p>
+          <a href="#" class="back-link">&#4808;&#4848; &#4619;&#4845; &#4720;&#4632;&#4616;&#4661; &#8593;</a>
+        </div>
+        <div class="detail-card" id="item-id4">
+          <h3>&#4653;&#4821;&#4661;&#4966; world war</h3>
+          <p><strong>&#4819;&#4845;&#4752;&#4725;&#4966; </strong>book</p>
+          <p><strong>&#4840;&#4808;&#4899;&#4704;&#4725; &#4819;&#4632;&#4725;&#4966; </strong>2017 &#4819;.&#4637;</p>
+          <p><strong>&#4848;&#4651;&#4658;&#4966; </strong>dr salah</p>
+          <p>
+            <em>&#4845;&#4613; &#4632;&#4925;&#4624;&#4941; &#4704;&#4779;&#4723;&#4622;&#4875;&#4733;&#4757; &#4813;&#4661;&#4901; &#4704;&#4829;&#4653;&#4829;&#4653; &#4720;&#4632;&#4829;&#4877;&#4711;&#4621;&#4962;</em>
+          </p>
+          <a href="#" class="back-link">&#4808;&#4848; &#4619;&#4845; &#4720;&#4632;&#4616;&#4661; &#8593;</a>
+        </div>
+        <div class="detail-card" id="item-id5">
+          <h3>&#4653;&#4821;&#4661;&#4966;  youtube</h3>
+          <p><strong>&#4819;&#4845;&#4752;&#4725;&#4966; </strong>movie</p>
+          <p><strong>&#4840;&#4808;&#4899;&#4704;&#4725; &#4819;&#4632;&#4725;&#4966; </strong>2015 &#4819;.&#4637;</p>
+          <p><strong>&#4768;&#4824;&#4875;&#4869; (Director)&#4966; </strong>abdulaziz</p>
+          <p>
+            <em> &#4845;&#4613; &#4714;&#4850;&#4846; &#4704;&#4677;&#4653;&#4705; &#4840;&#4634;&#4616;&#4672;&#4677; &#4896;&#4675;&#4634; &#4725;&#4637;&#4613;&#4653;&#4725; &#4752;&#4813;&#4962;</em>
+          </p>
+          <a href="#" class="back-link">&#4808;&#4848; &#4619;&#4845; &#4720;&#4632;&#4616;&#4661; &#8593;</a>
+        </div>
+      </div>
     </div>
   </body>
 </html>

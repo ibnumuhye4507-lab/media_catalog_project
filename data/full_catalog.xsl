@@ -13,7 +13,7 @@
                     direction: ltr;
                 }
                 .container {
-                    max-width: 950px;
+                    max-width: 1000px; /* መረጃው እንዲበቃ ትንሽ ሰፋ ተደርጓል */
                     margin: auto;
                     background: white;
                     padding: 30px;
@@ -67,6 +67,10 @@
                     border-radius: 12px;
                     font-weight: bold;
                 }
+                .creator-name {
+                    font-style: italic;
+                    color: #555;
+                }
             </style>
         </head>
         <body>
@@ -76,7 +80,7 @@
                     <tr>
                         <th>ዓይነት</th>
                         <th>ርዕስ</th>
-                        <th>የወጣበት ዓ.ም</th>
+                        <th>ደራሲ/ዳይሬክተር</th> <th>የወጣበት ዓ.ም</th>
                         <th>ተግባር</th>
                     </tr>
                     <xsl:for-each select="catalog/*">
@@ -90,6 +94,18 @@
                             </span>
                         </td>
                         <td style="font-weight:bold;"><xsl:value-of select="title"/></td>
+                        
+                        <td class="creator-name">
+                            <xsl:choose>
+                                <xsl:when test="name()='book'">
+                                    <xsl:value-of select="author"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="director"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </td>
+
                         <td><xsl:value-of select="year"/></td>
                         <td>
                             <xsl:choose>
@@ -98,7 +114,7 @@
                                         <xsl:attribute name="href">
                                             <xsl:value-of select="concat('https://www.google.com/search?tbm=bks&amp;q=', title)"/>
                                         </xsl:attribute>
-                                        📖 መጽሐፉን አንብብ
+                                        📖 አንብብ
                                     </a>
                                 </xsl:when>
                                 <xsl:otherwise>
@@ -106,7 +122,7 @@
                                         <xsl:attribute name="href">
                                             <xsl:value-of select="concat('https://www.youtube.com/results?search_query=', title)"/>
                                         </xsl:attribute>
-                                        ▶ ቪዲዮውን እይ
+                                        ▶ እይ
                                     </a>
                                 </xsl:otherwise>
                             </xsl:choose>
